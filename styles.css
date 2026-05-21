@@ -93,7 +93,7 @@ ul { list-style: none; }
    * Ruta original: C:\Users\Admin\Downloads\background.png
    * ──────────────────────────────────────────────────────────────
    */
-  background-image: url("file:///C:/Users/Admin/Documents/pagina/background.png");
+  background-image: url("./background.png");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
