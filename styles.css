@@ -70,7 +70,6 @@ ul { list-style: none; }
   opacity: 0;
   transform: translateY(-6px);
   transition: opacity 0.6s ease 0.1s, transform 0.6s ease 0.1s;
-  /* Sin cursor pointer ni hover — es texto plano */
   cursor: default;
   user-select: none;
 }
@@ -78,7 +77,11 @@ ul { list-style: none; }
 
 
 /* ═══════════════════════════════════════════════════════════════
-   HERO — imagen de fondo a pantalla completa
+   HERO — IMAGEN DE FONDO
+   ─────────────────────────────────────────────────────────────
+   Computadora : background.png
+   Móvil        : backgroundphone.jpeg
+   Ambos archivos deben estar en la misma carpeta que index.html
    ═══════════════════════════════════════════════════════════════ */
 .hero {
   min-height: 100vh;
@@ -87,20 +90,23 @@ ul { list-style: none; }
   align-items: center;
   position: relative;
 
-  /*
-   * ──────────────────────────────────────────────────────────────
-   * IMAGEN DE FONDO — cubre todo el hero
-   * Ruta original: C:\Users\Admin\Downloads\background.png
-   * ──────────────────────────────────────────────────────────────
-   */
-  background-image: url("./background.png");
+  /* ── Computadora (por defecto) ── */
+  background-image: url("background.png");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: local;
 }
 
-/* Velo muy suave sobre la imagen para legibilidad del texto */
+/* ── Móvil: pantallas de 768 px o menos ── */
+@media (max-width: 768px) {
+  .hero {
+    background-image: url("backgroundphone.jpeg");
+    background-position: center top;   /* encuadre óptimo para vertical */
+  }
+}
+
+/* Velo suave para legibilidad del texto */
 .hero::before {
   content: '';
   position: absolute;
@@ -110,7 +116,7 @@ ul { list-style: none; }
   z-index: 0;
 }
 
-/* ── Columna texto ─────────────────────────────────────────── */
+/* ── Texto del hero ─────────────────────────────────────────── */
 .hero-text {
   position: relative;
   z-index: 1;
@@ -184,27 +190,26 @@ ul { list-style: none; }
 
 /* ═══════════════════════════════════════════════════════════════
    GRADIENTE PUENTE
-   Las secciones siguientes deben usar background: var(--cream-deep)
    ═══════════════════════════════════════════════════════════════ */
 .footer-gradient-bridge {
   width: 100%;
   height: 140px;
   background: linear-gradient(
     to bottom,
-    var(--cream)      0%,
-    var(--cream-mid) 55%,
+    var(--cream)       0%,
+    var(--cream-mid)  55%,
     var(--cream-deep) 100%
   );
 }
 
 
 /* ═══════════════════════════════════════════════════════════════
-   RESPONSIVE
+   RESPONSIVE — ajustes de layout y tipografía
    ═══════════════════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
-  .nav-inner  { padding: 0 32px; }
-  .hero-text  { padding: 60px 40px 60px 8%; }
-  .hero-name  { font-size: clamp(3.5rem, 7vw, 6rem); }
+  .nav-inner { padding: 0 32px; }
+  .hero-text { padding: 60px 40px 60px 8%; }
+  .hero-name { font-size: clamp(3.5rem, 7vw, 6rem); }
 }
 
 @media (max-width: 768px) {
@@ -215,8 +220,9 @@ ul { list-style: none; }
 }
 
 @media (max-width: 480px) {
-  .nav-inner  { padding: 0 20px; }
-  .hero-text  { padding: 32px 24px 48px; }
-  .hero-name  { font-size: clamp(2.8rem, 13vw, 4rem); }
+  .nav-inner   { padding: 0 20px; }
+  .nav-logo    { font-size: 1.05rem; }
+  .hero-text   { padding: 32px 24px 48px; }
+  .hero-name   { font-size: clamp(2.8rem, 13vw, 4rem); }
   .hero-body p { font-size: 0.84rem; }
 }
