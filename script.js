@@ -1,44 +1,42 @@
-/* ═══════════════════════════════════════════════════════════════
-   CARLOS BUSTOS — script.js
-   Animaciones de entrada · Navbar scroll
-   ═══════════════════════════════════════════════════════════════ */
+/* ===========================
+   CARLOS BUSTOS — ARTESANO
+   script.js
+   =========================== */
 
-(function () {
-  'use strict';
+/* ---- Animaciones de entrada al hacer scroll ---- */
+(function initFadeIn() {
+  const selectors = [
+    '.hero__text',
+    '.hero__image',
+    '.obras__header',
+    '.obras__carousel-bs',
+    '.artesano__media',
+    '.artesano__content',
+  ];
 
-  const navbar   = document.getElementById('navbar');
-  const navLogo  = document.getElementById('navLogo');
-  const heroText = document.getElementById('heroText');
+  selectors.forEach(sel => {
+    const el = document.querySelector(sel);
+    if (el) el.classList.add('fade-in');
+  });
 
-  /* ─── 1. Animación de entrada ───────────────────────────────── */
-  function triggerEntrance() {
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        heroText && heroText.classList.add('visible');
-        navLogo  && navLogo.classList.add('visible');
-      });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
     });
-  }
+  }, { threshold: 0.12 });
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', triggerEntrance);
-  } else {
-    triggerEntrance();
-  }
-
-  /* ─── 2. Navbar — fondo al hacer scroll ─────────────────────── */
-  let ticking = false;
-
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      requestAnimationFrame(() => {
-        if (navbar) {
-          navbar.classList.toggle('scrolled', window.scrollY > 20);
-        }
-        ticking = false;
-      });
-      ticking = true;
-    }
-  }, { passive: true });
-
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 })();
+
+/* ---- Botón de play del artesano ---- */
+const playBtn = document.querySelector('.artesano__play');
+if (playBtn) {
+  playBtn.addEventListener('click', () => {
+    // Reemplaza la URL con la de tu video real:
+    // window.open('https://youtube.com/watch?v=TU_VIDEO_ID', '_blank');
+    alert('Próximamente: video de Carlos Bustos en su taller.');
+  });
+}

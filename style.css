@@ -1,0 +1,385 @@
+/* ===========================
+   CARLOS BUSTOS — ARTESANO
+   style.css
+   =========================== */
+
+:root {
+  --cream: #f2ede6;
+  --cream-dark: #e8e1d6;
+  --green-dark: #2d4a2a;
+  --green-mid: #4a7c47;
+  --green-light: #7aaa77;
+  --text-dark: #1a1a16;
+  --text-mid: #4a4a42;
+  --text-light: #8a8a7e;
+  --white: #ffffff;
+  --shadow-sm: 0 2px 12px rgba(45, 74, 42, 0.08);
+  --shadow-md: 0 6px 28px rgba(45, 74, 42, 0.13);
+  --radius-card: 16px;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Cormorant Garamond', Georgia, serif;
+  --font-ui: 'Jost', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  background-color: var(--cream);
+  color: var(--text-dark);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  max-width: 430px;
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+
+/* ===========================
+   NAVBAR — solo logo, sin hamburguesa
+   =========================== */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 24px 18px;
+  background: var(--cream);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(45, 74, 42, 0.06);
+}
+
+.navbar__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.navbar__name {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 13.5px;
+  letter-spacing: 0.18em;
+  color: var(--text-dark);
+}
+
+.navbar__subtitle {
+  font-family: var(--font-ui);
+  font-weight: 300;
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  color: var(--green-mid);
+  text-transform: uppercase;
+}
+
+/* ===========================
+   HERO
+   =========================== */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: flex-start;
+  padding: 32px 24px 0 24px;
+  min-height: 400px;
+  overflow: hidden;
+}
+
+.hero__text { padding-top: 12px; z-index: 2; }
+
+.hero__title {
+  font-family: var(--font-display);
+  font-size: 42px;
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--text-dark);
+  margin-bottom: 18px;
+}
+
+.hero__title em {
+  font-style: italic;
+  color: var(--green-mid);
+}
+
+.hero__leaf { margin-bottom: 16px; }
+
+.hero__desc {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--text-mid);
+  line-height: 1.65;
+  max-width: 180px;
+}
+
+.hero__image {
+  margin-top: -10px;
+  margin-right: -24px;
+}
+
+.hero__img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center top;
+  filter: drop-shadow(0 8px 24px rgba(90,58,26,0.18));
+  animation: floatHero 5s ease-in-out infinite;
+}
+
+@keyframes floatHero {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+/* ===========================
+   OBRAS DESTACADAS
+   =========================== */
+.obras {
+  padding: 44px 0 32px;
+}
+
+.obras__header {
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  margin-bottom: 20px;
+}
+
+.obras__titulo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.obras__titulo {
+  font-family: var(--font-ui);
+  font-weight: 500;
+  font-size: 11.5px;
+  letter-spacing: 0.2em;
+  color: var(--green-dark);
+  text-transform: uppercase;
+}
+
+/* ---- Carrusel Bootstrap personalizado ---- */
+.obras__carousel-bs {
+  margin: 0 24px;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.obra-card { background: var(--white); }
+
+.obra-card__img-wrap {
+  width: 100%;
+  height: 280px;
+  background: #ede8e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.obra-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  padding: 12px;
+}
+
+.obra-card__info {
+  padding: 16px 18px 18px;
+}
+
+.obra-card__nombre {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 3px;
+}
+
+.obra-card__desc {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--text-light);
+}
+
+/* Flechas del carrusel Bootstrap — estilo verde oscuro */
+.obras__carousel-bs .carousel-control-prev,
+.obras__carousel-bs .carousel-control-next {
+  width: 36px;
+  height: 36px;
+  background: var(--green-dark);
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  bottom: auto;
+  opacity: 0.85;
+  margin: 0 8px;
+  transition: opacity 0.2s;
+}
+
+.obras__carousel-bs .carousel-control-prev:hover,
+.obras__carousel-bs .carousel-control-next:hover {
+  opacity: 1;
+}
+
+.obras__carousel-bs .carousel-control-prev-icon,
+.obras__carousel-bs .carousel-control-next-icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* ===========================
+   EL ARTESANO
+   =========================== */
+.artesano {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: center;
+  padding: 40px 24px 48px;
+}
+
+.artesano__media {
+  position: relative;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  background: #c8b89a;
+  box-shadow: var(--shadow-md);
+}
+
+.artesano__foto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.artesano__play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.12);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.artesano__play:hover { background: rgba(255,255,255,0.25); }
+
+.artesano__play svg {
+  background: rgba(255,255,255,0.92);
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  padding: 14px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  transition: transform 0.2s;
+}
+
+.artesano__play:hover svg { transform: scale(1.08); }
+
+.artesano__content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.artesano__label {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  color: var(--green-mid);
+  text-transform: uppercase;
+}
+
+.artesano__desc {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--text-mid);
+  line-height: 1.6;
+}
+
+.artesano__link {
+  font-family: var(--font-ui);
+  font-size: 13.5px;
+  color: var(--green-mid);
+  border-bottom: 1px solid var(--green-mid);
+  padding-bottom: 2px;
+  display: inline-block;
+  margin-top: 4px;
+  cursor: default;
+}
+
+/* ===========================
+   FOOTER
+   =========================== */
+.footer {
+  background: var(--cream-dark);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  border-top: 1px solid rgba(45,74,42,0.1);
+}
+
+.footer__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.footer__name {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  color: var(--text-dark);
+}
+
+.footer__sub {
+  font-family: var(--font-ui);
+  font-weight: 300;
+  font-size: 9px;
+  letter-spacing: 0.32em;
+  color: var(--green-mid);
+  text-transform: uppercase;
+}
+
+.footer__copy {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  color: var(--text-light);
+  margin-top: 4px;
+}
+
+/* ===========================
+   ANIMACIONES DE ENTRADA
+   =========================== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (min-width: 431px) {
+  body { box-shadow: 0 0 60px rgba(0,0,0,0.12); }
+}
