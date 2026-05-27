@@ -96,6 +96,7 @@ img { display: block; max-width: 100%; height: auto; }
 .navbar__brand { display: flex; flex-direction: column; gap: 1px; }
 
 .navbar__name {
+  padding: 30px,
   font-family: var(--font-ui);
   font-weight: 600;
   font-size: 14px;
